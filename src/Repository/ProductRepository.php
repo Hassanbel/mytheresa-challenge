@@ -6,7 +6,7 @@ use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-class ProductRepository extends ServiceEntityRepository
+class ProductRepository extends ServiceEntityRepository implements ProductRepositoryInterface
 {
     private const LIMIT = 5;
 

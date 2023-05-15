@@ -13,10 +13,6 @@ class ProductDiscountManager
         $this->discountCalculator = $discountCalculator;
     }
 
-    /**
-     * @param Product $product
-     * @return Product
-     */
     public function applyDiscount(Product $product): Product
     {
         if ($this->discountCalculator->supportsDiscountConfiguration($product->getSku())
