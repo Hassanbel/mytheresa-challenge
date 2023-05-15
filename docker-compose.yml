@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - .:/var/www/codebase
+    ports:
+      - 8090:80
+    networks:
+      - app
+
+  database:
+    image: mysql:8
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mytheresa_db
+      MYSQL_USER: mytheresa_user
+      MYSQL_PASSWORD: mytheresa_pass
+    volumes:
+      - ./docker/mysql:/var/lib/mysql:rw
+    networks:
+      - app
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      args:
+        TIMEZONE: 'UTC'
+    volumes:
+      - .:/var/www/codebase
+    networks:
+      - app
+
+networks:
+  app:
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
