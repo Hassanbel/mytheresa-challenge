@@ -22,6 +22,8 @@ After pulling the code from the repo, set the dotenv environment file from the e
     docker compose exec -T php bin/console doctrine:fixtures:load --no-interaction
 
 There you are:
-- GET /products?category={category}&priceLessThan={price}: the main endpoint of the api
+- GET http://localhost:8090/products?category={category}&priceLessThan={price}: the main endpoint of the api
 
+To Run Tests:
 
+    docker compose exec php bin/phpunit 
