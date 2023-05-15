@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 

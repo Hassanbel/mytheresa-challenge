@@ -18,8 +18,7 @@ class ProductController extends AbstractController
         $products = $productRepo->searchProducts(
             [
                 $request->query->get("category") ?: "",
-                $request->query->get("priceLessThan") ?: 0,
-                $request->query->get("page") ?: 1,
+                $request->query->get("priceLessThan") ?: 0
             ]
         );
 
@@ -36,6 +35,6 @@ class ProductController extends AbstractController
             ];
         }
 
-        return new JsonResponse(json_encode($jsonResult), Response::HTTP_OK, [], true);
+        return new JsonResponse(json_encode(['products' => $jsonResult]), Response::HTTP_OK, [], true);
     }
 }

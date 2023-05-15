@@ -37,12 +37,12 @@ class ProductRepository extends ServiceEntityRepository
     {
         $results = [];
 
-        $data = $this->findAll();
+        $products = $this->findAll();
 
         /**
          * @var Product $product
          */
-        foreach ($data as $product) {
+        foreach ($products as $product) {
 
             if (!empty($params[0]) && $product->getCategory() !== $params[0]) {
                 continue;
